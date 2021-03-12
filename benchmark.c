@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
     buf = (double *) malloc(3 * nmax * nmax * sizeof(double));
     if (buf == NULL) die("failed to allocate largest problem size");
 
-    double Mflops_s[nsizes], Mflops_s_n[nsizes], per[nsizes], aveper;
+    double Mflops_s[nsizes], Mflops_s_n[nsizes];
 
     /* For each test size */
     for (int isize = 0; isize < sizeof(test_sizes) / sizeof(test_sizes[0]); ++isize) {
@@ -116,7 +116,7 @@ int main(int argc, char **argv) {
             /*  compute Gflop/s rate */
             Gflops_s = 2.e-9 * n_iterations * n * n * n / seconds;
             Gflops_s_n = 2.e-9 * n_iterations * n * n * n / seconds_naive;
-
+            seconds, seconds_naive = -1.0;
         }
 
         /* Storing Mflop rate and calculating percentage of peak */
